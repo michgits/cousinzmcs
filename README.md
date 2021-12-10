@@ -19,7 +19,7 @@ git clone https://github.com/michgits/cousinzmcs
 ```
 * Go into `mcserver` directory:
 ```
-cd mcserver
+cd cousinzmcs
 ```
 * Allow all commands executable:
 ```
