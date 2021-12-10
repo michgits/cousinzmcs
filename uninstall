@@ -1,0 +1,37 @@
+#!/bin/bash
+export MAIN_DIR=$PWD
+echo "> Checking..."
+
+# Begin Uninstalling Server
+if [ ! -d $MAIN_DIR/server ]; then
+
+echo "> you haven't installed the server yet..."
+
+
+elif [ -d $MAIN_DIR/server ]; then
+echo "> server folder detected."
+echo " -- are you sure you want to uninstall and delete your server? --"
+echo "type [1] for yes"
+echo "type [2] for no"
+
+UninstallPick=1
+read UninstallPick
+
+if [[ -z $UninstallPick ]]; then
+	
+echo "> by default, you selected 'no'"
+echo "> abort!"
+
+elif [[ $UninstallPick == 1 ]]; then
+sudo rm -r server
+sudo rm -rf bin
+killall screen
+echo "> uninstall completed. to make a new server, do ./install"
+
+elif [[ $UninstallPick == 2 ]]; then
+echo "> abort!"
+
+else
+echo "> abort!"
+fi
+fi

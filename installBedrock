@@ -1,0 +1,100 @@
+#!/bin/bash
+export MAIN_DIR=$PWD
+#Installing all the dependencise
+sudo apt install -qq screen neofetch wget unzip -y 
+
+echo "export PATH=$PATH:/some/new/path" > ~/.profile
+echo "> dependencies installtion completed."
+
+#Downloading ngrok && Downloading Minecraft Server
+mkdir server 
+
+echo ""
+echo "-- pick the following server type: --"
+echo "type [1] create vanilla server"
+echo "type [2] create gomint server"
+echo "type [3] create nukkit server (extra steps needed)"
+echo "type [4] create pocketminemp server"
+
+
+choiceForServer=1
+read choiceForServer
+
+# 0
+if [[ -z $choiceForServer ]]; then
+	
+	echo "> by default you selected [1]"
+    echo "> installing vanilla server..."
+    cd BedrockInstallScripts
+    chmod +x *
+    ./VanillaInstall
+
+# Vanilla
+elif [[ $choiceForServer == 1 ]]; then
+	
+    echo "> installing vanilla server..."
+    cd BedrockInstallScripts
+    chmod +x *
+    ./VanillaInstall
+
+# GoMint
+elif [[ $choiceForServer == 2 ]]; then
+
+	echo "> installing gomint server..."
+    cd BedrockInstallScripts
+    chmod +x *
+    ./GoMintInstall
+
+# Nukkit
+elif [[ $choiceForServer == 3 ]]; then
+
+	echo "> installing nukkit server..."
+    cd BedrockInstallScripts
+    chmod +x *
+    ./NukkitInstall
+
+# Pocketmine
+elif [[ $choiceForServer == 4 ]]; then
+
+	echo "> installing pocketmine Server..."
+    cd BedrockInstallScripts
+    chmod +x *
+    ./PocketmineInstall
+# Otherwise
+else
+    echo "> by default, you selected [1]"
+    echo "> installing vanilla server..."
+    cd BedrockInstallScripts
+    chmod +x *
+    ./VanillaInstall
+fi
+
+# Backup install playit.gg in case if first one doesn't download
+echo "> installing playit.gg..."
+cd ..
+wget "https://playit.gg/downloads/playit-linux_64-0.4.6" -O playit 
+chmod +x playit
+echo "> Playit.gg Installation Completed!"
+echo ""
+echo "-- do you want to start the server now? --"
+echo "type [1] for yes"
+echo "type [2] for no"
+
+StartServer=2
+read StartServer
+
+if [[ -z $StartServer ]]; then
+echo "> by default, you selected 'no'."
+echo "> you can start the server by do ./startserver"
+
+elif [[ $StartServer == 1 ]]; then
+./startserver
+
+elif [[ $StartServer == 2 ]]; then
+echo "you picked 'no'."
+echo "> you can start the server by do ./startserver"
+
+else
+echo "> by default, you selected 'no'."
+echo "> you can start the server by do ./startserver"
+fi
