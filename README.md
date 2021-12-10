@@ -15,7 +15,7 @@ You can view your exact specs by doing `./specinfo`
 * Activate a [Google Cloud Shell](https://console.cloud.google.com/) on Google cloud.
 * Clone this GitHub Project into the Console:
 ```
-git clone https://github.com/cousinzmcs
+git clone https://github.com/michgits/cousinzmcs
 ```
 * Go into `mcserver` directory:
 ```
